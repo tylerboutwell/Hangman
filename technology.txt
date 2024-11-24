@@ -1,0 +1,8 @@
+computer
+headphones
+keyboard
+monitor
+desktop
+containerization
+hardware
+automation

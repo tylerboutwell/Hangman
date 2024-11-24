@@ -1,0 +1,7 @@
+kangaroo
+lizard
+gorilla
+chicken
+tarantula
+monkey
+hippopotamus

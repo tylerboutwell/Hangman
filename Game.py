@@ -1,12 +1,24 @@
 import random
 
-words = []
-file = open('words.txt')
-for i in file:
-    words.append(i.replace('\n', ''))
-
-
 def start():
+    print("Welcome to Hangman!")
+    print("Choose a theme!")
+    print("Technology, Animals, Food")
+    theme = input().lower()
+
+    words = []
+    if theme == "animals":
+        file = open("animals.txt", "r")
+    elif theme == "technology":
+        file = open("technology.txt", "r")
+    elif theme == "food":
+        file = open("food.txt", "r")
+    else:
+        print("Invalid theme! Theme is technology!")
+        file = open("technology.txt", "r")
+    for i in file:
+        words.append(i.replace('\n', ''))
+
     word = random.choice(words)
 
     word_array = []
@@ -43,7 +55,7 @@ def start():
                 attempts += 1
             guesses.append(user_letter)
     if not winner:
-        print("You lost..")
+        print("You lost. The word was", word + ".")
 
     print("Play again? y/n")
     play_again = input()

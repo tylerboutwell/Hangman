@@ -1,23 +1,52 @@
-word = "computer"
+import random
 
-print("Enter your name:")
-username = input()
-print("Welcome " + username)
+words = ["computer", "headphones", "school"]
 
-word_array = []
-for i in word:
-    word_array.append(i)
+def start():
+    word = random.choice(words)
+    print("Enter your name:")
+    username = input()
+    print("Welcome " + username)
 
-word_status = []
-for i in range(len(word_array)):
-    word_status.append("_")
+    word_array = []
+    for i in word:
+        word_array.append(i)
 
-for i in range(7):
-    print("Guess the word: ")
-    for i in word_status:
-        print(i, end=" ")
-    print()
-    print("Enter a letter:")
-    user_letter = input()
-    if len(user_letter) != 1:
-        print("You must enter 1 letter!")
+    guesses = []
+    attempts = 1
+
+    while attempts > 0:
+        attempts -= 1
+        winner = True
+        print("Guess the word: ")
+        for i in word_array:
+            if i in guesses:
+                print(i, end = "")
+            else:
+                print("_", end = "")
+                winner = False
+        print()
+        if winner:
+            print("You won!!")
+            break
+        print("Enter a letter:")
+        user_letter = input().lower()
+        if len(user_letter) != 1:
+            print("You must enter 1 letter!")
+            attempts += 1
+        elif user_letter in guesses:
+            print("You already guessed " + user_letter)
+            attempts += 1
+        else:
+            if user_letter in word_array:
+                attempts += 1
+            guesses.append(user_letter)
+    if not winner:
+        print("You lost..")
+
+    print("Play again? y/n")
+    play_again = input()
+    if play_again == "y":
+        start()
+    
+start()

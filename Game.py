@@ -1,19 +1,20 @@
 import random
 
-words = ["computer", "headphones", "school"]
+words = []
+file = open('words.txt')
+for i in file:
+    words.append(i.replace('\n', ''))
+
 
 def start():
     word = random.choice(words)
-    print("Enter your name:")
-    username = input()
-    print("Welcome " + username)
 
     word_array = []
     for i in word:
         word_array.append(i)
 
     guesses = []
-    attempts = 1
+    attempts = 7
 
     while attempts > 0:
         attempts -= 1

@@ -35,6 +35,9 @@ def take_a_guess():
     else:
         if user_letter in word_array:
             attempts += 1
+            results = "Congrats! You guessed " + user_letter + "!"
+        else:
+            results = "Wrong letter!"
         guesses.append(user_letter)
 
     for i in word_array:
@@ -45,12 +48,14 @@ def take_a_guess():
             winner = False
     if winner:
         results = "You won!!"
-    if not winner and attempts == 0:
+        attempt_var.set("Play again?")
+    elif not winner and attempts == 0:
         results = "You lost. The word was " + word + "."
-
-    label1_var.set("Guess the word: " + word_status)
-    attempt_var.set("You have " + str(attempts) + " guesses left.")
+        attempt_var.set("Play again?")
+    else:
+        attempt_var.set("You have " + str(attempts) + " guesses left.")
     results_var.set(results)
+    label1_var.set("Guess the word: " + word_status)
 
     
 window = ttk.Window(themename = 'journal')

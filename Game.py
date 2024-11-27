@@ -1,8 +1,5 @@
 import random
 import tkinter as tk
-from idlelib.configdialog import font_sample_text
-from lib2to3.refactor import RefactoringTool
-from tkinter import ttk
 import ttkbootstrap as ttk
 
 
@@ -24,19 +21,11 @@ attempts = 7
 results = ""
 winner = True
 def take_a_guess():
-    global attempts, results, winner, guesses, word_array, guess_user, results_var
+    global attempts, results, winner, guesses, word_array, guess_user, results_var, label1_var, entry1
+    user_letter = entry1.get()
     attempts -= 1
-    attempt_var.set("You have " + str(attempts) + " guesses left.")
-    for i in word_array:
-        if i in guesses:
-            results += i
-        else:
-            results += "_"
-            winner = False
-    if winner:
-        results = "You won!!"
-    print("Enter a letter:")
-    user_letter = guess_user.get()
+    word_status = str()
+
     if len(user_letter) != 1:
         results = "You must enter 1 letter!"
         attempts += 1
@@ -47,8 +36,20 @@ def take_a_guess():
         if user_letter in word_array:
             attempts += 1
         guesses.append(user_letter)
+
+    for i in word_array:
+        if i in guesses:
+            word_status += i
+        else:
+            word_status += "_ "
+            winner = False
+    if winner:
+        results = "You won!!"
     if not winner and attempts == 0:
         results = "You lost. The word was", word + "."
+
+    label1_var.set("Guess the word: " + word_status)
+    attempt_var.set("You have " + str(attempts) + " guesses left.")
     results_var.set(results)
 
     

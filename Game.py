@@ -19,11 +19,11 @@ for i in word:
 guesses = []
 attempts = 7
 results = ""
-winner = True
 def take_a_guess():
-    global attempts, results, winner, guesses, word_array, guess_user, results_var, label1_var, entry1
+    global attempts, results, guesses, word_array, guess_user, results_var, label1_var, entry1
     user_letter = entry1.get()
     attempts -= 1
+    winner = True
     word_status = str()
 
     if len(user_letter) != 1:
@@ -46,7 +46,7 @@ def take_a_guess():
     if winner:
         results = "You won!!"
     if not winner and attempts == 0:
-        results = "You lost. The word was", word + "."
+        results = "You lost. The word was " + word + "."
 
     label1_var.set("Guess the word: " + word_status)
     attempt_var.set("You have " + str(attempts) + " guesses left.")

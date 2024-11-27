@@ -1,4 +1,8 @@
 import random
+import tkinter as tk
+from idlelib.configdialog import font_sample_text
+from tkinter import ttk
+import ttkbootstrap as ttk
 
 def start():
     print("Welcome to Hangman!")
@@ -61,5 +65,23 @@ def start():
     play_again = input()
     if play_again == "y":
         start()
+    else:
+        window.destroy()
     
-start()
+window = ttk.Window(themename = 'journal')
+window.title('Hangman')
+window.geometry('500x500')
+
+label1 = ttk.Label(window, text="Guess the word: ")
+label1.grid(column=0, row=0, padx=5, pady=5)
+
+label2 = ttk.Label(window, text="You have " + " guesses left.")
+label2.grid(column=0, row=1, padx=5, pady=5)
+
+entry1 = ttk.Entry(window)
+entry1.grid(column=1, row=1, padx=5, pady=5)
+
+button1 = ttk.Button(window, text = 'ENTER')
+button1.grid(column=2, row=1, padx=5, pady=5)
+
+window.mainloop()

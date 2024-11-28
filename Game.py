@@ -1,30 +1,32 @@
 import random
 import tkinter as tk
+from logging import exception
+
 import ttkbootstrap as ttk
 
-
-words = []
-
+# select a random txt file of words
 files = ["animals.txt", "technology.txt", "food.txt"]
 file = open(random.choice(files))
+
+#add words from file to array and select a random word
+words = []
 for i in file:
     words.append(i.replace('\n', ''))
-
 word = random.choice(words)
 
-word_array = []
+#add each letter from word to an array
+word_letters = []
 for i in word:
-    word_array.append(i)
+    word_letters.append(i)
 
 guesses = []
 attempts = 7
-results = ""
 def take_a_guess():
-    global attempts, results, guesses, word_array, guess_user, results_var, label1_var, entry1
+    global attempts
     user_letter = entry1.get()
-    attempts -= 1
     winner = True
     word_status = str()
+    attempts -= 1
 
     if len(user_letter) != 1:
         results = "You must enter 1 letter!"
@@ -33,19 +35,20 @@ def take_a_guess():
         results = "You already guessed " + user_letter
         attempts += 1
     else:
-        if user_letter in word_array:
+        if user_letter in word_letters:
             attempts += 1
             results = "Congrats! You guessed " + user_letter + "!"
         else:
             results = "Wrong letter!"
         guesses.append(user_letter)
 
-    for i in word_array:
+    for i in word_letters:
         if i in guesses:
             word_status += i
         else:
             word_status += "_ "
             winner = False
+
     if winner:
         results = "You won!!"
         attempt_var.set("Play again?")
@@ -57,7 +60,7 @@ def take_a_guess():
     results_var.set(results)
     label1_var.set("Guess the word: " + word_status)
 
-    
+
 window = ttk.Window(themename = 'journal')
 window.title('Hangman')
 window.geometry('500x500')

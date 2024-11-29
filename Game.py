@@ -1,23 +1,30 @@
 import random
 from Gui import *
 
-# select a random txt file of words
 files = ["animals.txt", "technology.txt", "food.txt"]
-file = open(random.choice(files))
-
-#add words from file to array and select a random word
-words = []
-for i in file:
-    words.append(i.replace('\n', ''))
-word = random.choice(words)
-
-#add each letter from word to an array
-word_letters = []
-for i in word:
-    word_letters.append(i)
-
+word = str()
+attempts = int()
 guesses = []
-attempts = 7
+word_letters = []
+
+def init_game():
+    global word, attempts, guesses, word_letters
+    words = []
+    guesses = []
+    attempts = 7
+    # select a random txt file of words
+    file = open(random.choice(files))
+
+    #add words from file to array and select a random word
+    for i in file:
+        words.append(i.replace('\n', ''))
+    word = random.choice(words)
+
+    #add each letter from word to an array
+    word_letters = []
+    for i in word:
+        word_letters.append(i)
+
 def take_a_guess(t_attempts, t_results, t_label1, t_entry):
     global attempts
     user_letter = t_entry.get()
@@ -57,4 +64,5 @@ def take_a_guess(t_attempts, t_results, t_label1, t_entry):
     t_results.set(results)
     t_label1.set("Guess the word: " + word_status)
 
+init_game()
 gui(word, attempts, take_a_guess)

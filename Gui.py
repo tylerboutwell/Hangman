@@ -6,6 +6,7 @@ def gui(word, attempts, take_a_guess):
     window.title('Hangman')
     window.geometry('400x150')
     window.iconbitmap('icons8_hangman_32_YBQ_icon.ico')
+    window.resizable(False, False)
 
     label1_var = tk.StringVar(master=window)
     label1_var.set("Guess the word: " + "_ " * len(word))

@@ -5,6 +5,7 @@ def gui(word, attempts, take_a_guess):
     window = ttk.Window(themename = 'journal')
     window.title('Hangman')
     window.geometry('400x150')
+    window.iconbitmap('icons8_hangman_32_YBQ_icon.ico')
 
     label1_var = tk.StringVar(master=window)
     label1_var.set("Guess the word: " + "_ " * len(word))

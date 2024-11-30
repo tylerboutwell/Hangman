@@ -4,7 +4,7 @@ import ttkbootstrap as ttk
 def gui(word, attempts, take_a_guess):
     window = ttk.Window(themename = 'journal')
     window.title('Hangman')
-    window.geometry('500x500')
+    window.geometry('400x150')
 
     label1_var = tk.StringVar(master=window)
     label1_var.set("Guess the word: " + "_ " * len(word))

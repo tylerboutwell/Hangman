@@ -70,7 +70,7 @@ def take_a_guess(t_attempts, t_results, t_label1, t_entry):
         elif not winner and attempts == 0:
             game_complete = True
             results = "You lost. The word was " + word + "."
-            attempts -= 1
+            t_attempts.set("You have " + str(attempts) + " guesses left.")
             play_again_show()
         else:
             t_attempts.set("You have " + str(attempts) + " guesses left.")

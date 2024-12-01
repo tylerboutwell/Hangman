@@ -29,7 +29,7 @@ def init_game():
 
 def take_a_guess(t_attempts, t_results, t_label1, t_entry):
     global attempts, game_complete
-    user_entry = t_entry.get()
+    user_entry = t_entry
     winner = True
     word_status = str()
     attempts -= 1

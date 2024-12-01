@@ -38,8 +38,9 @@ def take_a_guess(t_attempts, t_results, t_label1, t_entry):
         if user_entry == "yes":
             init_game()
             results = ''
+            play_again_hide()
         else:
-            results = 'Enter yes to play again!'
+            return
     elif len(user_entry) != 1:
         results = "You must enter 1 letter!"
         attempts += 1
@@ -65,11 +66,12 @@ def take_a_guess(t_attempts, t_results, t_label1, t_entry):
         if winner:
             game_complete = True
             results = "You won!!"
-            t_attempts.set("Play again?")
+            play_again_show()
         elif not winner and attempts == 0:
             game_complete = True
             results = "You lost. The word was " + word + "."
-            t_attempts.set("Play again?")
+            attempts -= 1
+            play_again_show()
         else:
             t_attempts.set("You have " + str(attempts) + " guesses left.")
     t_results.set(results)

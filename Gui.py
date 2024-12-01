@@ -1,8 +1,17 @@
 import tkinter as tk
 import ttkbootstrap as ttk
 
+window = ttk.Window(themename = 'journal')
+
+play_again_button = ttk.Button(window, text = 'Play Again')
+
+def play_again_show():
+    play_again_button.grid(column=0, row=3, padx=5, pady=5)
+def play_again_hide():
+    play_again_button.grid_forget()
+
 def gui(word, attempts, take_a_guess):
-    window = ttk.Window(themename = 'journal')
+    global play_again_button
     window.title('Hangman')
     window.geometry('800x200')
     window.iconbitmap('icons8_hangman_32_YBQ_icon.ico')
@@ -103,5 +112,8 @@ def gui(word, attempts, take_a_guess):
     results_var = tk.StringVar(master = window)
     results_label = ttk.Label(window, textvariable = results_var)
     results_label.grid(column=0, row=2, padx=5, pady=5)
+
+    play_again_button = ttk.Button(window, text='Play again?',
+                                   command=lambda: take_a_guess(attempt_var, results_var, label1_var, 'yes'))
 
     window.mainloop()

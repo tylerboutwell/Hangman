@@ -1,5 +1,5 @@
 import random
-from Gui import *
+from gui import *
 
 files = ["animals.txt", "technology.txt", "food.txt"]
 word = str()

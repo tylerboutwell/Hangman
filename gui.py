@@ -1,7 +1,7 @@
 import tkinter as tk
 import ttkbootstrap as ttk
 
-window = ttk.Window(themename = 'journal')
+window = ttk.Window(themename = 'darkly')
 
 play_again_button = ttk.Button(window, text = 'Play Again')
 

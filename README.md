@@ -21,7 +21,7 @@ cd Hangman
 
 3. Run the game:
 ```
-python game.py
+python start.py
 ```
 
 

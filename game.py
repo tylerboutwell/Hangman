@@ -76,6 +76,3 @@ def take_a_guess(t_attempts, t_results, t_label1, t_entry):
             t_attempts.set("You have " + str(attempts) + " guesses left.")
     t_results.set(results)
     t_label1.set("Guess the word: " + word_status)
-
-init_game()
-gui(word, attempts, take_a_guess)
